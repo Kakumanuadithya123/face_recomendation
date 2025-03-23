@@ -146,7 +146,8 @@ sympy
 tenacity
 tensorboard
 tensorboard-data-server
-tensorflow
+# tensorflow
+tensorflow-cpu
 tensorflow-io-gcs-filesystem
 termcolor
 threadpoolctl
