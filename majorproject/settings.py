@@ -93,26 +93,25 @@ WSGI_APPLICATION = 'majorproject.wsgi.application'
 # }
 
 # postgresql://majorproject_user:CZTMTRNb24jUGjIc5CTisAV6tAzfjqFf@dpg-cu7156dumphs73d1ip6g-a.oregon-postgres.render.com/majorproject
-import dj_database_url
-import os
 
-if os.getenv("RENDER"):
-    # Use PostgreSQL on Render
+
+
+# Check if running on Render
+if os.getenv('RENDER') == 'True':  
     DATABASES = {
-        'default': dj_database_url.config(default=os.getenv("postgresql://user:8CCCC5HaHoBCnmykpuzlOHbJDIUUZ9DX@dpg-cv41nvdds78s73e2kmjg-a.oregon-postgres.render.com/majorproject_fqnz"))
+        'default': dj_database_url.config(default=os.getenv('postgresql://user:8CCCC5HaHoBCnmykpuzlOHbJDIUUZ9DX@dpg-cv41nvdds78s73e2kmjg-a.oregon-postgres.render.com/majorproject_fqnz'))
     }
-else:
-    DATABASES = {
+  # Use local PostgreSQL
+DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # Replace with your database backend
-        'NAME': 'master',
-        'USER': 'postgres',
-        'PASSWORD': 'Adithya@123',
-        'HOST': 'localhost',  # Or your database host
-        'PORT': '5432',       # Default port for PostgreSQL
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'master',
+    'USER': 'postgres',
+    'PASSWORD': 'Adithya@123',
+    'HOST': 'localhost',
+    'PORT': '5432',
     }
 }
-
 
 
 
@@ -162,8 +161,6 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = BASE_DIR / "static_files"
 
-
-
 # This production code might break development mode, so we check whether we're in DEBUG mode
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
@@ -174,6 +171,13 @@ if not DEBUG:
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Media files (Face images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
