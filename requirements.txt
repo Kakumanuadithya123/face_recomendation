@@ -10,7 +10,6 @@ gunicorn
 numpy
 scipy
 pandas
-tensorflow
 keras
 mtcnn
 opencv-python
