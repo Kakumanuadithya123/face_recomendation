@@ -10,7 +10,7 @@ services:
     name: majorproject
     runtime: python3.10
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn majorproject.asgi:application -k uvicorn.workers.UvicornWorker"
+    startCommand: "gunicorn --timeout 120 --workers 3 -k uvicorn.workers.UvicornWorker majorproject.asgi:application"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -19,4 +19,6 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
-        value: 4
+        value: 2
+      - key: GUNICORN_CMD_ARGS
+        value: "--timeout 120 --workers 3"
