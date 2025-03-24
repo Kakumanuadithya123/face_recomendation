@@ -9,8 +9,11 @@ services:
     plan: free
     name: majorproject
     runtime: python3.10
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn --timeout 120 --workers 3 -k uvicorn.workers.UvicornWorker majorproject.asgi:application"
+    buildCommand: "python manage.py collectstatic --noinput && ./build.sh"
+
+    startCommand: "gunicorn -w 2 -t 120 -k uvicorn.workers.UvicornWorker majorproject.asgi:application"
+
+"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
