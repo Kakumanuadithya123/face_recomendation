@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'majorproject.wsgi.application'
 # Check if running on Render
 if os.getenv('RENDER') == 'True':  
     DATABASES = {
-        'default': dj_database_url.config(default=os.getenv('postgresql://attendance_g0ze_user:mS9Nw1z3nlGjy5GD7a6zs1A02vvQ7GmA@dpg-cvgfgqan91rc73bbtss0-a.oregon-postgres.render.com/attendance_g0ze'))
+        'default': dj_database_url.config(default=os.getenv('postgresql://attendance_sami_user:k4TqfNAZGihegC8SecVbHE1mha3GZjjM@dpg-cvgnm5d2ng1s739816mg-a.oregon-postgres.render.com/attendance_sami'))
     }
   # Use local PostgreSQL
 DATABASES = {
