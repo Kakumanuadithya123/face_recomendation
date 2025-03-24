@@ -16,8 +16,10 @@ from django.template.context_processors import static
 import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # Suppress INFO logs
 
-import os
+import tensorflow as tf
+
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 # Quick-start development settings - unsuitable for production
