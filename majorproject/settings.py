@@ -79,7 +79,7 @@ TEMPLATES = [
 
 
 
-WSGI_APPLICATION = 'majorproject.wsgi.application'
+WSGI_APPLICATION = 'majorproject.wsgi:application'
 
 
 # Database
@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'majorproject.wsgi.application'
 # Check if running on Render
 if os.getenv('RENDER') == 'True':  
     DATABASES = {
-        'default': dj_database_url.config(default=os.getenv('postgresql://user:8CCCC5HaHoBCnmykpuzlOHbJDIUUZ9DX@dpg-cv41nvdds78s73e2kmjg-a.oregon-postgres.render.com/majorproject_fqnz'))
+        'default': dj_database_url.config(default=os.getenv('postgresql://attendance_g0ze_user:mS9Nw1z3nlGjy5GD7a6zs1A02vvQ7GmA@dpg-cvgfgqan91rc73bbtss0-a.oregon-postgres.render.com/attendance_g0ze'))
     }
   # Use local PostgreSQL
 DATABASES = {
